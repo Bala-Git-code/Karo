@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #F2EBDC;
+  color: #1F1F1F;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  line-height: 1.7;
+  color: #6B7280;
+}
+
+/* ── Typography Base ───────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  color: #1F1F1F;
+}
+
+/* ── Section Spacing & Layout ──────────────────────── */
+section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media (max-width: 768px) {
+  section { padding-top: 80px; padding-bottom: 80px; }
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px auto;
+}
+@media (max-width: 768px) {
+  .section-header { margin-bottom: 48px; }
+}
+
+.section-header h2 {
+  font-size: clamp(2.25rem, 5vw, 3rem); /* 36px to 48px */
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.section-header p {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  color: rgba(31, 31, 31, 0.65);
+}
+
+/* ── Section Badge ─────────────────────────────────── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(249, 115, 22, 0.08); /* #F97316 */
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  color: #F97316;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.section-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F97316;
+}
+
+/* ── Gradient Text ─────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Card Design System ─────────────────────────────── */
+/* ── Card Design System ─────────────────────────────── */
+/* Unified card style: white bg, 18px radius, tight border, soft baseline shadow */
+.card-base {
+  position: relative;
+  overflow: hidden;
+  background: #FFF9F2;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Optional subtle edge */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  transition: all 0.25s ease;
+}
+.card-base::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F97316, #FB923C);
+  z-index: 10;
+}
+.card-base:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 768px) {
+  .card-base { padding: 24px; }
+}
+
+/* ── Button Design System ──────────────────────────── */
+/* Primary: Orange gradient, scale + glow on hover */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F97316, #FB923C);
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+/* Secondary: Outline style, subtle hover */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: transparent;
+  color: #1F1F1F;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(31, 31, 31, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(31, 31, 31, 0.04);
+  border-color: #1F1F1F;
+  transform: scale(1.02);
+}
+
+/* ── Subtle Backgrounds ────────────────────────────── */
+.bg-primary { 
+  background-color: #F2EBDC; 
+  background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.bg-secondary { 
+  background-color: #E9DFC8; 
+  background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Background Gradients & Grid ───────────────────── */
+.gradient-orb {
+  filter: blur(80px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Marquee ───────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #E3D4B2 transparent;
+}
