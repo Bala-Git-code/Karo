@@ -68,7 +68,7 @@ export function Navbar({ onApplyClick }) {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-7">
             <a
               href="#investors"
               className="text-sm font-medium text-[#1F1F1F]/60 hover:text-brand-primary transition-colors"

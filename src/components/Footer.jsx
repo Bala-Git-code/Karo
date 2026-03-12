@@ -43,8 +43,8 @@ export function Footer() {
         style={{ background: "linear-gradient(90deg, transparent, #F97316, #FB923C, transparent)" }}
       />
 
-      <div className="section-container" style={{ paddingTop: "64px", paddingBottom: "48px" }}>
-        <div className="flex flex-col lg:flex-row justify-between gap-y-12 gap-x-12 lg:gap-x-20 mb-14">
+      <div className="section-container" style={{ paddingTop: "40px", paddingBottom: "28px" }}>
+        <div className="flex flex-col lg:flex-row justify-between gap-y-10 gap-x-12 lg:gap-x-20 mb-10">
           {/* Brand Col */}
           <div className="lg:max-w-sm">
             <a href="/" className="inline-flex items-center gap-3.5 mb-6 group">

@@ -77,10 +77,10 @@ export function AboutSection() {
             {pillars.map(({ Icon, title, desc, color, bg }, i) => (
               <motion.div
                 key={title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
                 className="card-base flex gap-5 items-start !p-6" /* standard class applied */
               >
                 <div className="w-12 h-12 rounded-[12px] flex items-center justify-center flex-shrink-0" style={{ background: bg }}>

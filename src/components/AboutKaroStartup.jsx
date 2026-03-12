@@ -73,26 +73,35 @@ export function AboutKaroStartup() {
 
           {/* Right — Timeline */}
           <div className="relative pl-6 lg:pl-10 py-6">
-            <div
-              className="absolute left-[24px] lg:left-[40px] top-8 bottom-8 w-[3px] rounded-full"
-              style={{ background: "linear-gradient(180deg, #F97316, #FB923C)", opacity: 0.8, transform: "translateX(-50%)" }}
+            <motion.div
+              initial={{ opacity: 0, scaleY: 0, x: "-50%" }}
+              whileInView={{ opacity: 0.8, scaleY: 1, x: "-50%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="absolute left-[24px] lg:left-[40px] top-8 bottom-8 w-[3px] rounded-full origin-top"
+              style={{ background: "linear-gradient(180deg, #F97316, #FB923C)" }}
             />
             {milestones.map((m, i) => (
-              <motion.div
+              <div
                 key={m.year}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={revealVariants}
                 className="relative mb-10 last:mb-0"
               >
                 {/* Dot */}
-                <div
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
+                  whileInView={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
                   className="absolute left-0 top-[22px] w-[20px] h-[20px] rounded-full z-10"
-                  style={{ background: "#F97316", border: "4px solid #F2EBDC", boxShadow: "0 0 0 6px rgba(249,115,22,0.18)", transform: "translate(-50%, -50%)" }}
+                  style={{ background: "#F97316", border: "4px solid #F2EBDC", boxShadow: "0 0 12px rgba(249,115,22,0.4), 0 0 0 6px rgba(249,115,22,0.18)" }}
                 />
-                <div className="card-base ml-8 cursor-default !p-6">
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+                  className="card-base ml-8 cursor-default !p-6"
+                >
                   <div className="flex items-center gap-3.5 mb-3">
                     <span
                       className="font-heading font-extrabold text-[13px] px-3 py-1 rounded-[8px] uppercase tracking-wide"
@@ -103,8 +112,8 @@ export function AboutKaroStartup() {
                     <span className="font-heading font-extrabold text-[#1F1F1F] text-[1.125rem]">{m.label}</span>
                   </div>
                   <p className="text-[#1F1F1F]/60 text-[0.9375rem] leading-relaxed">{m.desc}</p>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, TrendingUp, DollarSign } from "lucide-react";
+import { Briefcase, TrendingUp, DollarSign, Hexagon, Component, Layers, Flame, Mountain, Activity, Triangle, Sparkles, Gem, Compass } from "lucide-react";
 
 // Standard unified scroll reveal
 const revealVariants = {
@@ -10,16 +10,16 @@ const revealVariants = {
 };
 
 const investors = [
-  { name: "Nexus VP", logo: "N", color: "#F97316" },
-  { name: "Blume Ventures", logo: "B", color: "#4F46E5" },
-  { name: "Fireside Ventures", logo: "F", color: "#22c55e" },
-  { name: "Sequoia India", logo: "S", color: "#f59e0b" },
-  { name: "Accel Partners", logo: "A", color: "#ef4444" },
-  { name: "Matrix Partners", logo: "M", color: "#06b6d4" },
-  { name: "3one4 Capital", logo: "3", color: "#FB923C" },
-  { name: "Lightspeed India", logo: "L", color: "#ec4899" },
-  { name: "Elevation Capital", logo: "E", color: "#10b981" },
-  { name: "Kalaari Capital", logo: "K", color: "#f97316" },
+  { name: "Nexus VP", Icon: Hexagon, color: "#F97316" },
+  { name: "Blume Ventures", Icon: Component, color: "#4F46E5" },
+  { name: "Fireside Ventures", Icon: Flame, color: "#22c55e" },
+  { name: "Sequoia India", Icon: Mountain, color: "#f59e0b" },
+  { name: "Accel Partners", Icon: Activity, color: "#ef4444" },
+  { name: "Matrix Partners", Icon: Layers, color: "#06b6d4" },
+  { name: "3one4 Capital", Icon: Triangle, color: "#FB923C" },
+  { name: "Lightspeed India", Icon: Sparkles, color: "#ec4899" },
+  { name: "Elevation Capital", Icon: Gem, color: "#10b981" },
+  { name: "Kalaari Capital", Icon: Compass, color: "#f97316" },
 ];
 
 const allInvestors = [...investors, ...investors];
@@ -56,27 +56,32 @@ export function InvestorsSection() {
         </motion.div>
 
         {/* Marquee */}
-        <div className="relative overflow-hidden mb-24">
+        <div className="relative overflow-hidden mb-24 py-6 group">
+          {/* Fading transparent edges */}
           <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#F2EBDC] to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#F2EBDC] to-transparent pointer-events-none" />
 
-          <div className="marquee-track animate-marquee" style={{ animationDuration: "35s" }}>
-            {allInvestors.map((inv, i) => (
-              <motion.div
-                key={`${inv.name}-${i}`}
-                whileHover={{ y: -5, scale: 1.06 }}
-                transition={{ duration: 0.2 }}
-                className="flex flex-col items-center gap-3.5 mx-8 cursor-default"
-              >
-                <div
-                  className="w-16 h-16 rounded-[14px] flex items-center justify-center text-white font-heading font-extrabold text-[1.375rem] shadow-sm"
-                  style={{ background: `linear-gradient(135deg, ${inv.color}cc, ${inv.color})` }}
+          {/* Marquee Track — pauses on hover for better interaction */}
+          <div className="marquee-track animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: "35s" }}>
+            {allInvestors.map((inv, i) => {
+              const IconComp = inv.Icon;
+              return (
+                <motion.div
+                  key={`${inv.name}-${i}`}
+                  whileHover={{ y: -8, scale: 1.08 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="flex flex-col items-center gap-4 mx-8 cursor-default"
                 >
-                  {inv.logo}
-                </div>
-                <span className="text-[13px] text-[#1F1F1F]/60 whitespace-nowrap font-medium tracking-wide">{inv.name}</span>
-              </motion.div>
-            ))}
+                  <div
+                    className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center shadow-md transition-shadow hover:shadow-xl"
+                    style={{ background: `linear-gradient(135deg, ${inv.color}dd, ${inv.color})` }}
+                  >
+                    <IconComp size={32} color="#ffffff" strokeWidth={2} />
+                  </div>
+                  <span className="text-[14px] text-[#1F1F1F]/70 whitespace-nowrap font-semibold tracking-wide">{inv.name}</span>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 

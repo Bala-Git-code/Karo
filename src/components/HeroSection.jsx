@@ -94,9 +94,15 @@ export function HeroSection({ onApplyClick }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="hidden lg:block relative"
+            style={{ paddingTop: "40px", paddingBottom: "40px" }}
           >
-            {/* Using standard unified card-base styling but customized slightly for hero scale */}
-            <div className="card-base !p-8 !cursor-default overflow-hidden" style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.06)" }}>
+            {/* Main dashboard card */}
+            <motion.div
+              whileHover={{ y: -6, scale: 1.015, boxShadow: "0 32px 64px rgba(0,0,0,0.12), 0 0 0 2px rgba(249,115,22,0.1)" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="card-base !p-8 !cursor-default overflow-hidden"
+              style={{ boxShadow: "0 24px 60px rgba(0,0,0,0.06)" }}
+            >
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
                 <div>
@@ -144,25 +150,76 @@ export function HeroSection({ onApplyClick }) {
                       {String.fromCharCode(65 + i)}
                     </div>
                   ))}
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#E9DFC8] flex items-center justify-center text-[#1F1F1F]/50 text-[10px] font-bold shadow-sm w-8">
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#E9DFC8] flex items-center justify-center text-[#1F1F1F]/50 text-[10px] font-bold shadow-sm">
                     +12
                   </div>
                 </div>
                 <span className="text-[#1F1F1F]/45 text-[13px] font-medium">16 investors watching</span>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Floating badges */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }} className="absolute top-4 right-4 bg-white rounded-2xl p-4 flex items-center gap-3 shadow-[0_12px_30px_rgba(249,115,22,0.12)] border border-[#F97316]/10">
-              <Rocket size={18} className="text-[#F97316]" />
+            {/* Floating badge — Next Pitch (top-right, outside card) */}
+            <motion.div
+              initial={{ opacity: 0, y: -12, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.85, ease: "easeOut" }}
+              whileHover={{ y: -4, scale: 1.06, boxShadow: "0 20px 40px rgba(0,0,0,0.12), 0 0 0 2px rgba(249,115,22,0.15)" }}
+              style={{
+                position: "absolute",
+                top: "16px",
+                right: "-24px",
+                background: "#FFF9F2",
+                borderRadius: "16px",
+                border: "1px solid rgba(0,0,0,0.05)",
+                boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
+                padding: "12px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                cursor: "default",
+                zIndex: 10,
+                overflow: "hidden",
+              }}
+            >
+              {/* Top accent strip */}
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, #F97316, #FB923C)" }} />
+              <div className="w-8 h-8 rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(249,115,22,0.1)" }}>
+                <Rocket size={16} className="text-[#F97316]" />
+              </div>
               <div>
                 <div className="font-heading font-bold text-[#1F1F1F] text-[14px] leading-tight">Next Pitch</div>
                 <div className="text-[#1F1F1F]/45 text-[12px] mt-0.5 font-medium">in 2 days</div>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="absolute bottom-4 left-4 bg-white rounded-2xl p-4 flex items-center gap-3 shadow-[0_12px_30px_rgba(34,197,94,0.12)] border border-green-500/10">
-              <TrendingUp size={18} className="text-green-500" />
+            {/* Floating badge — ₹2.3Cr Raised (bottom-left, outside card) */}
+            <motion.div
+              initial={{ opacity: 0, y: 12, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.95, ease: "easeOut" }}
+              whileHover={{ y: 4, scale: 1.06, boxShadow: "0 20px 40px rgba(0,0,0,0.12), 0 0 0 2px rgba(249,115,22,0.15)" }}
+              style={{
+                position: "absolute",
+                bottom: "16px",
+                left: "-24px",
+                background: "#FFF9F2",
+                borderRadius: "16px",
+                border: "1px solid rgba(0,0,0,0.05)",
+                boxShadow: "0 12px 30px rgba(0,0,0,0.08)",
+                padding: "12px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                cursor: "default",
+                zIndex: 10,
+                overflow: "hidden",
+              }}
+            >
+              {/* Top accent strip */}
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, #F97316, #FB923C)" }} />
+              <div className="w-8 h-8 rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(34,197,94,0.1)" }}>
+                <TrendingUp size={16} className="text-green-500" />
+              </div>
               <div>
                 <div className="font-heading font-bold text-green-600 text-[14px] leading-tight">₹2.3Cr Raised</div>
                 <div className="text-[#1F1F1F]/45 text-[12px] mt-0.5 font-medium">this month</div>
